@@ -3,6 +3,7 @@
 
 #include"Menu.h"
 #include"CharacterType.h"
+#include"character.h"
 
 
 
@@ -32,6 +33,10 @@ int main()
     bool mainMenu = true;
     bool chaMenu = true;
     int currentselection = 0;
+    character c1 = character("cloud", CharacterType::Warrior);
+    character c2 = character("Barret", CharacterType::Tank);
+    character c3 = character("Areith", CharacterType::Mage);
+    character c4 = character("Tifa", CharacterType::Rouge);
 
     while (mainMenu)
     {
@@ -59,6 +64,10 @@ int main()
                 case IngameMenu::stats:
                     system("CLS");
                     std::cout << "\t---PLAYER STATS---\n";
+                    c1.DisplayCharacterSheet();
+                    c2.DisplayCharacterSheet();
+                    c3.DisplayCharacterSheet();
+                    c4.DisplayCharacterSheet();
                     break;
                 case IngameMenu::party:
                     system("CLS");

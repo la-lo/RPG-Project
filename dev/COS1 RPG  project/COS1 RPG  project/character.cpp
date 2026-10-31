@@ -8,18 +8,22 @@ void character::assignedClassType()
 	case CharacterType::Warrior:
 		Basestats = {100.0f,10.0f,8.0f,20.0f,10.0f,15.0f};
 		growthlevel = {12.0f,1.2f,1.0f,3.0f,1.0f,1.5f};
+		break;
 
 	case CharacterType::Tank:
 		Basestats = {150.0f,16.0f,5.0f,10.0f,5.0f,5.0f};
 		growthlevel = {20.0f,2.0f,0.4f,1.0f,0.5f,1.8f};
+		break;
 		
 	case CharacterType::Mage:
 		Basestats = {85.0f,8.0f,14.0f,45.0f,11.0f,5.0f};
 		growthlevel = {9.0f,0.5f,2.2f,6.0f,1.0f,0.6f};
+		break;
 
 	case CharacterType::Rouge:
 		Basestats = {80.0f,7.0f,8.0f,25.0f,16.0f,25.0f};
 		growthlevel = {8.0f,0.7f,0.6f,2.0f,2.2f,1.8f};
+		break;
 
 	}
 }
@@ -78,13 +82,14 @@ Stats character::GetcurrentStats() const
 		current.DF += EquippedArmor->Defenseboost;
 		current.Speed += EquippedArmor->Speedboost;
 	}
+	return current;
 }
 
 void character::DisplayCharacterSheet() const
 {
 	Stats current = GetcurrentStats();
 	std::cout << "\n--- " << name << "(Lvl " << level << " ) ---\n";
-	std::cout << "HealthPoints: " << current.HP << "|\n MagicPoint: " << current.MP << " |\n AttackPower: " << current.AP << " |\n Defense: " << current.DF << "\n | MagicPower: "
+	std::cout << "HealthPoints: " << current.HP << "|\n MagicPoint: " << current.MP << " |\n AttackPower: " << current.AP << " |\n Defense: " << current.DF << "|\n MagicPower: "
 		<< current.Magic << "|\n Speed: " << current.Speed << "|\n";
 }
 
