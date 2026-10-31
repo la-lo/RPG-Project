@@ -2,8 +2,9 @@
 struct Stats
 {
 	float HP;
-	float df;
-	float magic;
-	float speed;
-	float ap;
+	float DF;
+	float Magic;
+	float MP;	
+	float Speed;
+	float AP;
 };
