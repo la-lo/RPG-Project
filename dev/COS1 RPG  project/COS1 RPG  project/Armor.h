@@ -5,4 +5,5 @@ struct Armor
 	std::string name;
 	float  Defenseboost;
 	float Speedboost;
+	CharacterType reqclass;
 };
