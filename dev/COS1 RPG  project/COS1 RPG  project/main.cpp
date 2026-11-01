@@ -39,10 +39,8 @@ int main()
     character c4 = character("Tifa", CharacterType::Rouge);
 
    
-   c1.Attack(c1, c2);
-   c2.DisplayCurrentStats();
-   c2.DisplayMaxStats();
-    /*while (mainMenu)
+  
+    while (mainMenu)
     {
         MainMenu mainChoice = runMenuLoop<MainMenu>("\t----Main Menu----\n", Gameoptions, static_cast<int>(MainMenu::Count));
         bool chaMenu = true;
@@ -72,10 +70,10 @@ int main()
                     case IngameMenu::stats:
                         system("CLS");
                         std::cout << "\t---PLAYER STATS---\n";
-                        c1.DisplayCharacterSheet();
-                        c2.DisplayCharacterSheet();
-                        c3.DisplayCharacterSheet();
-                        c4.DisplayCharacterSheet();
+                        c1.DisplayCurrentStats();
+                        c2.DisplayCurrentStats();
+                        c3.DisplayCurrentStats();
+                        c4.DisplayCurrentStats();
                         break;
                     case IngameMenu::party:
                         system("CLS");
@@ -119,7 +117,7 @@ int main()
             mainMenu = false;
             break;
         }
-    }*/
+    }
        
   
     return 0;
