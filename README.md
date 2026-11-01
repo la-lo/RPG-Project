@@ -44,7 +44,7 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+End of Week Reflection: Well for me this week was quite a busy week with work taking up most of my time this week so I wasn't able to turn many of my ideas into code not until Friday night . But the things I was able to do in the time I had to work on my projects were creating a character, stats, weapon and armor  classes  allowing me to create a leveling up system dedicated to to four character types I have chosen to implement in my( Soldier(all around stats ),Tank(high def stats, Mage(high magic stats), and fighter(high Speed stats)) with each type having it own leveling up stats system. Also created implementing restriction on weapon so only a specific character type can equip a specific weapon  type. A challenge I would face is where I was forgetting to add breaks and return to switch and if-statement causing some function and menu system to not work properly.  This has taught me to slow down reread my code before I would try to test run said code to see I can personally read and properly spot  error in my code before having a crash without visual studio code telling me.
 
 ### Week 2
 
