@@ -9,6 +9,7 @@ constexpr auto KEY_UP = 72;
 constexpr auto KEY_DOWN = 80;
 constexpr auto KEY_ENTER = 13;
 constexpr auto KEY_ESC = 27;;
+constexpr auto KEY_TAB = 9;
 
 enum class MainMenu
 {
@@ -34,6 +35,8 @@ enum class Battlemenu
     Attack,
     spells,
     items,
+    defend,
+    count
 
 };
 

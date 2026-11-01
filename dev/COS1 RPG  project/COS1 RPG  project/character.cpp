@@ -31,7 +31,10 @@ void character::assignedClassType()
 character::character(const std::string& _name, CharacterType _type)
 	:name(_name),type(_type),level(1),EquippedWeapon(nullptr),EquippedArmor(nullptr)
 {
+	
 	assignedClassType();
+	this->currentHP = GetcurrentStats().HP;
+	this->currentMP = GetcurrentStats().MP;
 }
 
 void character::LevelUp()
@@ -39,6 +42,13 @@ void character::LevelUp()
 	level++;
 	std::cout << name << " is now level " << level<<"!\n";
 }
+
+std::string character::getName()
+{
+	return name;
+}
+
+
 
 bool character::WeaponEquip(const std::shared_ptr<Weapon>& _weapon)
 {
@@ -63,6 +73,17 @@ bool character::ArmorEquip(const std::shared_ptr<Armor>& _armor)
 	
 }
 
+void character::DisplayMaxStats() const
+{
+	Stats current = GetcurrentStats();
+	std::cout << "\n--- " << name << "(Lvl " << level << " ) ---\n";
+	std::cout << "HealthPoints: " << current.HP << "|\n MagicPoint: " << current.MP
+		<< " |\n AttackPower: " << current.AP
+		<< " |\n Defense: " << current.DF
+		<< "|\n MagicPower: " << current.Magic
+		<< "|\n Speed: " << current.Speed << "|\n";
+}
+
 Stats character::GetcurrentStats() const
 {
 	Stats current = Basestats;
@@ -71,6 +92,7 @@ Stats character::GetcurrentStats() const
 	current.Magic += growthlevel.Magic * (level - 1);
 	current.Speed += growthlevel.Speed * (level - 1);
 	current.AP += growthlevel.AP * (level - 1);
+	current.MP += growthlevel.MP * (level - 1);
 
 	if(EquippedWeapon)
 	{
@@ -82,15 +104,29 @@ Stats character::GetcurrentStats() const
 		current.DF += EquippedArmor->Defenseboost;
 		current.Speed += EquippedArmor->Speedboost;
 	}
+
+	
 	return current;
 }
 
-void character::DisplayCharacterSheet() const
+
+
+void character::DisplayCurrentStats() const
 {
 	Stats current = GetcurrentStats();
 	std::cout << "\n--- " << name << "(Lvl " << level << " ) ---\n";
-	std::cout << "HealthPoints: " << current.HP << "|\n MagicPoint: " << current.MP << " |\n AttackPower: " << current.AP << " |\n Defense: " << current.DF << "|\n MagicPower: "
-		<< current.Magic << "|\n Speed: " << current.Speed << "|\n";
+	std::cout << "HealthPoints: " << currentHP << "|\n MagicPoint: " << currentMP
+		<< " |\n AttackPower: " << current.AP 
+		<< " |\n Defense: " << current.DF 
+		<< "|\n MagicPower: "<< current.Magic 
+		<< "|\n Speed: " << current.Speed << "|\n";
+}
+
+void character::takedamage(float _damage)
+{
+	
+	currentHP -= _damage;
+	if (currentHP < 0.0f)HP = 0.0f;
 }
 
 void character::Attack(const character& attacker, character& receiver)
@@ -100,6 +136,12 @@ void character::Attack(const character& attacker, character& receiver)
 	float damage = attack.AP - (defense.DF * 0.2f);
 
 	if (damage < 1.0f)damage = 1.0f;
+	
+	receiver.takedamage(damage);
+	
 
 	std::cout << attacker.name << " Attacked " << receiver.name << " for " << damage<<"\n";
+	std::cout << receiver.currentHP;
+	
+	
 }
