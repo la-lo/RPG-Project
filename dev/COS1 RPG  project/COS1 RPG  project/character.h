@@ -4,6 +4,7 @@
 #include"stats.h"
 #include"Weapon.h"
 #include"Armor.h"
+class enemy;
 class character:public Stats
 {
 private:
@@ -30,6 +31,8 @@ public:
 
 	void takedamage(float _damage);
 
+	void Attack(const character& attacker, enemy& receiver);
+
 	
 
 	bool WeaponEquip(const std::shared_ptr<Weapon>& _weapon);
@@ -37,11 +40,13 @@ public:
 
 	void DisplayMaxStats()const;
 	Stats GetcurrentStats() const;
+	int getHP() const;
+	int getMP() const;
 
 	void DisplayCurrentStats() const;
 
-	void Attack(const character& attacker, character& receiver);
-	character Enemy(const std::string _name, CharacterType _type);
+	
+	
 
 
 };

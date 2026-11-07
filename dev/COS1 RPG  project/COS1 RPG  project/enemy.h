@@ -1,15 +1,18 @@
 #include<string>
-class Enemy
+#pragma once
+
+class enemy
 {
 public:
-	Enemy(std::string name, int maxhp, int attack);
+	enemy(std::string name, int maxhp, int attack,int df);
 	
 	std::string getName();
-	int gethealth();
-	int maxhealth();
-	int getattack();
+	int gethealth() const;
+	int maxhealth() const;
+	int getattack() const;
+	int getDefense()const;
 
-	void takeDamage(int damage );
+	void takeDamage(int damage);
 
 
 private:
@@ -17,6 +20,7 @@ private:
 	int Health;
 	int Maxhealth;
 	int Attackpower;
+	int Defense;
 
 
 };

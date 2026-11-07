@@ -1,31 +1,36 @@
 #include "enemy.h"
 
-Enemy::Enemy(std::string _name, int maxhp, int attack)
-    :name(_name), Maxhealth(maxhp), Health(maxhp), Attackpower(attack)
+enemy::enemy(std::string _name, int maxhp, int attack,int df)
+    :name(_name), Maxhealth(maxhp), Health(maxhp), Attackpower(attack),Defense(df)
 {
 }
 
-std::string Enemy::getName()
+std::string enemy::getName()
 {
     return name;
 }
 
-int Enemy::gethealth()
+int enemy::gethealth() const
 {
     return Health;
 }
 
-int Enemy::maxhealth()
+int enemy::maxhealth() const
 {
     return Maxhealth;
 }
 
-int Enemy::getattack()
+int enemy::getattack() const
 {
     return Attackpower;
 }
 
-void Enemy::takeDamage(int damage)
+int enemy::getDefense() const
+{
+    return Defense;
+}
+
+void enemy::takeDamage(int damage)
 {
     Health -= damage;
     if (Health < 0)Health = 0;

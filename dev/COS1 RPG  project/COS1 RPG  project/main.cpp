@@ -4,6 +4,9 @@
 #include"Menu.h"
 #include"CharacterType.h"
 #include"character.h"
+#include"enemy.h"
+#include"Battle.h"
+
 
 
 
@@ -38,10 +41,13 @@ int main()
     character c3 = character("Areith", CharacterType::Mage);
     character c4 = character("Tifa", CharacterType::Rouge);
 
+    enemy e1 = enemy("Sephitoth", 300, 50,20);
+
    
   
     while (mainMenu)
     {
+        system("CLS");
         MainMenu mainChoice = runMenuLoop<MainMenu>("\t----Main Menu----\n", Gameoptions, static_cast<int>(MainMenu::Count));
        
 
@@ -55,6 +61,9 @@ int main()
             system("CLS");
 
             std::cout << "\t\tDimension 7\n\t\t-----------";
+
+            inBAttle(c1, e1);
+
 
             std::cout << "\n\n\tKey\n\t---\n-Press ESC for Main Menu";
              

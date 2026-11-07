@@ -1,4 +1,5 @@
 #include "character.h"
+#include"enemy.h"
 #include<iostream>
 
 void character::assignedClassType()
@@ -109,6 +110,18 @@ Stats character::GetcurrentStats() const
 	return current;
 }
 
+int character::getHP() const
+{
+	Stats current = GetcurrentStats();
+	return current.HP;
+}
+
+int character::getMP() const
+{
+	Stats current = GetcurrentStats();
+	return current.MP;
+}
+
 
 
 void character::DisplayCurrentStats() const
@@ -129,19 +142,18 @@ void character::takedamage(float _damage)
 	if (currentHP < 0.0f)HP = 0.0f;
 }
 
-void character::Attack(const character& attacker, character& receiver)
+void character::Attack(const character& attacker, enemy& receiver)
 {
 	Stats attack = attacker.GetcurrentStats();
-	Stats defense = receiver.GetcurrentStats();
-	float damage = attack.AP - (defense.DF * 0.2f);
+	float damage = attack.AP - (receiver.getDefense() * 0.2f);
 
 	if (damage < 1.0f)damage = 1.0f;
 	
-	receiver.takedamage(damage);
+	receiver.takeDamage(damage);
 	
 
-	std::cout << attacker.name << " Attacked " << receiver.name << " for " << damage<<"\n";
-	std::cout << receiver.currentHP;
+	
+	
 	
 	
 }
