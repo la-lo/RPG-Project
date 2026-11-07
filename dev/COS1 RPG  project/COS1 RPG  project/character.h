@@ -41,5 +41,8 @@ public:
 	void DisplayCurrentStats() const;
 
 	void Attack(const character& attacker, character& receiver);
+	character Enemy(const std::string _name, CharacterType _type);
+
+
 };
 

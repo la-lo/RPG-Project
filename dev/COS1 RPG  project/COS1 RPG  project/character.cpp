@@ -145,3 +145,5 @@ void character::Attack(const character& attacker, character& receiver)
 	
 	
 }
+
+
