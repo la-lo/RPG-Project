@@ -20,12 +20,15 @@
 	
 	bool battle = true;
 	while(battle)
+
+
 	{
-		if (player.GetcurrentStats().HP <= 0 || _cpu.gethealth() <= 0) 
+		if (player.getHP() <= 0 || _cpu.gethealth() <= 0) 
 		{
 			battle = false;
 			break;
 		}
+		
 
 
 		DisplayHPMP(player, _cpu);
@@ -42,14 +45,10 @@
 		case Battlemenu::items:
 			break;
 		case Battlemenu::defend:
-			if (dist(gen) == 0)
-			{
-				std::cout << "Blocked";
-
-			}else
-			{
-				player.takedamage(_cpu.getattack() * 0.2);
-			}
+			
+			_cpu.attack(_cpu, player);
+				
+			
 			break;
 
 		}
@@ -63,7 +62,7 @@
 
  void DisplayHPMP(character player, enemy _cpu)
  {
-	 std::cout << "\n" << player.getName() << ": HP: " << player.GetcurrentStats().HP << '/' << player.getHP();
+	 std::cout << "\n" << player.getName() << ": HP: " << player.getHP() << '/' << player.getMaxHp();
 
 	 std::cout << std::endl;
 

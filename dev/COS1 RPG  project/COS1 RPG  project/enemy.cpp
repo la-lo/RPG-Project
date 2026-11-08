@@ -1,3 +1,5 @@
+
+#include"character.h"
 #include "enemy.h"
 
 enemy::enemy(std::string _name, int maxhp, int attack,int df)
@@ -20,6 +22,7 @@ int enemy::maxhealth() const
     return Maxhealth;
 }
 
+
 int enemy::getattack() const
 {
     return Attackpower;
@@ -36,3 +39,12 @@ void enemy::takeDamage(int damage)
     if (Health < 0)Health = 0;
 
 }
+
+void enemy::attack(enemy& attacker, character& reciever)
+{
+    
+    float damage = attacker.Attackpower * 0.2;
+
+    reciever.takedamage(damage);
+}
+

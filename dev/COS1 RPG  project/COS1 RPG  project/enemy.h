@@ -1,4 +1,5 @@
 #include<string>
+#include"character.h"
 #pragma once
 
 class enemy
@@ -13,6 +14,8 @@ public:
 	int getDefense()const;
 
 	void takeDamage(int damage);
+
+	void attack(enemy& attacker,character& reciever);
 
 
 private:

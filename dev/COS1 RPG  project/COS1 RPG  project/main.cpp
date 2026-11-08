@@ -60,17 +60,20 @@ int main()
            
             system("CLS");
 
-            std::cout << "\t\tDimension 7\n\t\t-----------";
+            std::cout << "\t\tDimension 7\n\t\t-----------\nPress Any Key.";
+            std::cout << "\n\n\tKey\n\t---\n-Press ESC for Main Menu" ;
 
+            
             inBAttle(c1, e1);
+           
 
 
-            std::cout << "\n\n\tKey\n\t---\n-Press ESC for Main Menu";
+          
              
             while (_getch() != KEY_TAB);
             
                 while (chaMenu)
-                {
+                { 
                     IngameMenu gamechoice = runMenuLoop<IngameMenu>("\t----Character Menu----", playeroptions, static_cast<int>(IngameMenu::count));
                     if (static_cast<int>(gamechoice) == -1)
                     {
@@ -114,7 +117,7 @@ int main()
                         std::cout << "\nPress TAB to Return To Character Menu.";
                         break;
                     }
-                    
+                   
                     while (_getch() != KEY_TAB);
 
         

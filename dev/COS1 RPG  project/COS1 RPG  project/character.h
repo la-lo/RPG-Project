@@ -1,21 +1,26 @@
 #pragma once
 #include<memory>
 #include"CharacterType.h"
-#include"stats.h"
+#include<vector>
+
 #include"Weapon.h"
 #include"Armor.h"
 class enemy;
-class character:public Stats
+class character
 {
 private:
 	std::string name;
 	CharacterType type;
 	int level;
-	Stats Basestats;
-	Stats growthlevel;
-	
+
 	float currentHP;
 	float currentMP;
+
+
+	
+	std::vector<int>Basestats;
+	std::vector<int>growthlevel;
+	
 
 	std::shared_ptr<Weapon> EquippedWeapon;
 	std::shared_ptr<Armor> EquippedArmor;
@@ -39,7 +44,7 @@ public:
 	bool ArmorEquip(const std::shared_ptr<Armor>& _armor);
 
 	void DisplayMaxStats()const;
-	Stats GetcurrentStats() const;
+	int getMaxHp()const;
 	int getHP() const;
 	int getMP() const;
 
