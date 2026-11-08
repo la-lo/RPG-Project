@@ -43,13 +43,22 @@
 		case Battlemenu::spells:
 			break;
 		case Battlemenu::items:
+			player.Displayitems();
 			break;
 		case Battlemenu::defend:
+			if(dist(gen)==0)
+			{
+				
+				break;
+			}
+			else
+			{_cpu.attack(_cpu, player);
+				break;
+			}
 			
-			_cpu.attack(_cpu, player);
 				
 			
-			break;
+		
 
 		}
 		

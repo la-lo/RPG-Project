@@ -128,6 +128,25 @@ void character::DisplayCurrentStats() const
 		<< "|\n Speed: " << Basestats[4] << "|\n";
 }
 
+void character::Displayitems() const
+{
+	if (items.empty())
+	{
+		std::cout << "items is empty";
+		return;
+	}
+	std::cout << "\n---- Party's Inventory----\n";
+
+	for (int i=0;sizeof(items)+1;i++ )
+	{
+		std::cout << items[i].Getname();
+		if (items[i].Type() == ItemType::Heal)
+		{
+			std::cout << "Heals: " << items[i].GetPower() << " HP";
+		}std::cout << "\n";
+	}
+}
+
 void character::takedamage(float _damage)
 {
 	

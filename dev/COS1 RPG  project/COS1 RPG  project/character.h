@@ -5,6 +5,7 @@
 
 #include"Weapon.h"
 #include"Armor.h"
+#include"Items.h"
 class enemy;
 class character
 {
@@ -20,6 +21,8 @@ private:
 	
 	std::vector<int>Basestats;
 	std::vector<int>growthlevel;
+
+	std::vector<Items>items;
 	
 
 	std::shared_ptr<Weapon> EquippedWeapon;
@@ -49,6 +52,7 @@ public:
 	int getMP() const;
 
 	void DisplayCurrentStats() const;
+	void Displayitems()const;
 
 	
 	
