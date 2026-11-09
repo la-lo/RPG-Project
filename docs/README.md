@@ -48,7 +48,22 @@ End of Week Reflection: Well for me this week was quite a busy week with work ta
 
 ### Week 2
 
-My next stand up will go here...
+**END OF WEEK PROGRESS**
+
+**Worked This Week**
+what I worked on this pass week was a protype to in battle function that I have completed but need to rework it so it work with  a party so player can control the rest of the party. Also added enemy class that will be were I create  constructor for regular enemy, mini bosses and bosses.
+
+**Challenges**
+
+Was displaying updated character Hp after player had taken damage from CPU. because player stats where in a sperate stats class it was difficult to update stats so i deleted stats class and declared player stats in character class making it easier to update currentHP.
+
+**Accomplishment**
+
+my understanding of classes has improved this week  letting me slow down and not separate every feature into it own class creating more difficulty for myself. this has allowed me to better declare my function and features.
+
+**WHAT NEXT**
+
+the next thing on my bingo list is too debug my menu system because after creating my in battle function when pressing tab does not go to player menu anymore  more so i have to go back and fix my programing logic.
 
 ### Week 3
 
