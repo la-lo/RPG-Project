@@ -6,6 +6,7 @@
 #include"character.h"
 #include"enemy.h"
 #include"Battle.h"
+#include"Party.h"
 
 
 
@@ -14,35 +15,38 @@
 
 int main()
 {
+
     std::vector<std::string> Gameoptions =
     {
         "Start Game",
         "Load  Save",
         "Quit Game"
     };
-    std::vector<std::string>  playeroptions = 
-    { 
+    std::vector<std::string>  playeroptions =
+    {
      "Stats",
     "Party",
     "Inventory",
     "Weapons",
     "Spells" };
 
-    std::cout<<getClassName(CharacterType::Warrior);
-    
-    
+    std::cout << getClassName(CharacterType::Warrior);
+
+
     int totalGOptions = static_cast<int>(IngameMenu::count);
 
-    
-     bool mainMenu = true;
+
+    bool mainMenu = true;
     int currentselection = 0;
-    character c1 = character("Cloud", CharacterType::Warrior);
+    character c0 = character("Cloud", CharacterType::Warrior);
     character c2 = character("Barret", CharacterType::Tank);
     character c3 = character("Areith", CharacterType::Mage);
     character c4 = character("Tifa", CharacterType::Rouge);
 
-    enemy e1 = enemy("Sephitoth", 300, 50,20);
 
+    enemy e1 = enemy("Sephitoth", 300, 50, 20);
+    
+    Party party(c0,c2,c3,c4);
    
   
     while (mainMenu)
@@ -67,7 +71,7 @@ int main()
             {
                 break;
             }
-            inBAttle(c3, e1);
+            InPBAttle(party, e1);
            
 
 
@@ -89,7 +93,7 @@ int main()
                     case IngameMenu::stats:
                         system("CLS");
                         std::cout << "\t---PLAYER STATS---\n";
-                        c1.DisplayCurrentStats();
+                        c0.DisplayCurrentStats();
                         c2.DisplayCurrentStats();
                         c3.DisplayCurrentStats();
                         c4.DisplayCurrentStats();
@@ -98,7 +102,7 @@ int main()
                         system("CLS");
                         std::cout << "\t---PARTY---\n";
 
-                        std::cout << c1.getName() << "\n"
+                        std::cout << c0.getName() << "\n"
                             << c2.getName() << "\n"
                             << c3.getName()<<"\n"
                             <<c4.getName();

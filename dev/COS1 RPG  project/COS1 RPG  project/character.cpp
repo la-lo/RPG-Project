@@ -185,9 +185,9 @@ void character::Attack(const character& attacker, enemy& receiver)
 {
 	
 	
-	int damage = attacker.Basestats[5] - (receiver.getattack() * 0.2f);
+	int damage = attacker.Basestats[5] - (receiver.getattack() * 2);
 
-	if (damage < 1.0f)damage = 1.0f;
+	if (damage < 1)damage = 1;
 	
 	receiver.takeDamage(damage);
 	

@@ -43,9 +43,11 @@ void enemy::takeDamage(int damage)
 void enemy::attack(enemy& attacker, character& reciever)
 {
     
-    float damage = attacker.Attackpower * 2;
+    int damage = attacker.Attackpower * 2;
 
-    reciever.takedamage(damage/reciever.GetDefense());
+    reciever.takedamage(damage/reciever.GetDefense()*.4);
     
 }
+
+
 

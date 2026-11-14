@@ -1,5 +1,6 @@
 #include<string>
 #include"character.h"
+#include"Party.h"
 #pragma once
 
 class enemy
@@ -16,6 +17,7 @@ public:
 	void takeDamage(int damage);
 
 	void attack(enemy& attacker,character& reciever);
+	
 
 
 private:
