@@ -54,33 +54,36 @@
 		
 
 		Battlemenu battlechoice = runBMenuLoop<Battlemenu>("\tBattle",Battleop,static_cast<int>(Battlemenu::count),player,_cpu);
-		Spells spellchoice = runBMenuLoop<Spells>("\tSpells", spell, static_cast<int>(Spells::count), player, _cpu);
+		
 
 		switch(battlechoice)
 		{
+			
 		case Battlemenu::Attack:
 			player.Attack(player,_cpu);
 			break;
 		case Battlemenu::spells:
-			if(battlechoice == Battlemenu::spells)
-			{
-				switch(spellchoice)
+		{
+			if (battlechoice == Battlemenu::spells)
+			{Spells spellchoice = runBMenuLoop<Spells>("\tSpells", spell, static_cast<int>(Spells::count), player, _cpu);
+				switch (spellchoice)
 				{
 				case Spells::Cure:
 					player.Cure(player);
-				break;
+					break;
 				case Spells::FireBall:
-				break;
+					break;
 				case  Spells::IceAge:
-				break;
+					break;
 				case Spells::Lightning:
-				break;
+					break;
 				}
 
 				break;
 			}
-			
 			break;
+		}
+			
 		case Battlemenu::items:
 			player.Displayitems();
 			break;
