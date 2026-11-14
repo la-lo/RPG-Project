@@ -107,11 +107,26 @@ int character::getHP() const
 
 }
 
+int character::GetMaxMP() const
+{
+	return Basestats[3];
+}
+
 
 
 int character::getMP() const
 {
 	return currentMP;
+}
+
+int character::getMPower() const
+{
+	return Basestats[2];
+}
+
+int character::GetDefense() const
+{
+	return Basestats[1];
 }
 
 
@@ -147,18 +162,30 @@ void character::Displayitems() const
 	}
 }
 
-void character::takedamage(float _damage)
+void character::takedamage(int _damage)
 {
 	
 	currentHP -= _damage;
 	if (currentHP < 0) currentHP = 0;
 }
 
+void character::Heal(int _heal)
+{
+	currentHP += _heal;
+
+	if (currentHP > Basestats[0]) 
+	{ 
+		currentHP = Basestats[0];
+		
+	}
+	currentMP -= 2;
+}
+
 void character::Attack(const character& attacker, enemy& receiver)
 {
 	
 	
-	float damage = attacker.Basestats[5] - (receiver.getattack() * 0.2f);
+	int damage = attacker.Basestats[5] - (receiver.getattack() * 0.2f);
 
 	if (damage < 1.0f)damage = 1.0f;
 	
@@ -169,6 +196,15 @@ void character::Attack(const character& attacker, enemy& receiver)
 	
 	
 	
+}
+
+
+
+void character::Cure( character& receiver)
+{
+	int  heal = receiver.Basestats[2] * 2;
+
+	receiver.Heal(heal);
 }
 
 

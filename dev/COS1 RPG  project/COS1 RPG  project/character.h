@@ -37,9 +37,12 @@ public:
 	void LevelUp();
 	std::string getName();
 
-	void takedamage(float _damage);
+	void takedamage(int _damage);
+	void Heal(int _heal);
 
 	void Attack(const character& attacker, enemy& receiver);
+
+	void Cure( character& receiver);
 
 	
 
@@ -49,7 +52,10 @@ public:
 	void DisplayMaxStats()const;
 	int getMaxHp()const;
 	int getHP() const;
+	int GetMaxMP()const;
 	int getMP() const;
+	int getMPower()const;
+	int GetDefense()const;
 
 	void DisplayCurrentStats() const;
 	void Displayitems()const;

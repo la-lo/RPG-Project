@@ -41,6 +41,16 @@ enum class Battlemenu
 
 };
 
+enum class Spells
+{
+    Cure,
+    FireBall,
+    IceAge,
+    Lightning,
+    count
+
+};
+
 
 
 template <typename EnumType>
@@ -53,6 +63,7 @@ EnumType runMenuLoop(const std::string& menuTitle, const std::vector<std::string
         
         std::cout << menuTitle << "\n";
 
+         std::cout << "~UP/Down Arrows for navigation\n~Enter for choice\n\n";
 
         for (int i = 0; i < totalOptions; ++i) {
             if (i == currentSelection) {
@@ -80,6 +91,7 @@ EnumType runMenuLoop(const std::string& menuTitle, const std::vector<std::string
         else if (ch == KEY_ESC) {
             return static_cast<EnumType>(-1);
         }
+       
     }
     return static_cast<EnumType>(-1);
 }
@@ -91,6 +103,7 @@ EnumType runBMenuLoop(const std::string& menuTitle, const std::vector<std::strin
     int totalOptions = enumCountValue;
     while (menuRunning) {
         system("CLS");
+        std::cout << "~UP/Down Arrows for navigation\n~Enter for choice\n\n";
 
         std::cout << menuTitle << "\n";
 

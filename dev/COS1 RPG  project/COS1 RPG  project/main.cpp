@@ -63,8 +63,11 @@ int main()
             std::cout << "\t\tDimension 7\n\t\t-----------\nPress Any Key.";
             std::cout << "\n\n\tKey\n\t---\n-Press ESC for Main Menu" ;
 
-            
-            inBAttle(c1, e1);
+            if(_getch() == KEY_ESC )
+            {
+                break;
+            }
+            inBAttle(c3, e1);
            
 
 
