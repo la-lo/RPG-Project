@@ -16,6 +16,8 @@ private:
 
 	float currentHP;
 	float currentMP;
+	float ATBguage;
+	bool isready;
 
 
 	

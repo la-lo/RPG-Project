@@ -174,6 +174,7 @@
 			 break;
 		 case Battlemenu::spells:
 		 {
+			
 			 if (battlechoice == Battlemenu::spells)
 			 {
 				 Spells spellchoice = runBMenuLoop<Spells>("\tSpells", spell, static_cast<int>(Spells::count),_party, _cpu);

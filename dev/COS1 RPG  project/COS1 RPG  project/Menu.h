@@ -6,6 +6,7 @@
 #include"Battle.h"
 
 
+
 constexpr auto KEY_UP = 72;
 constexpr auto KEY_DOWN = 80;
 constexpr auto KEY_ENTER = 13;
@@ -53,14 +54,16 @@ enum class Spells
 
 
 
+
 template <typename EnumType>
-EnumType runMenuLoop(const std::string& menuTitle, const std::vector<std::string>& options, int enumCountValue) {
+EnumType runMenuLoop(const std::string& menuTitle, const std::vector<std::string>& options, int enumCountValue)
+{
     bool menuRunning = true;
     int currentSelection = 0;
     int totalOptions = enumCountValue;
     while (menuRunning) {
-        system("CLS");
         
+        system("CLS");
         std::cout << menuTitle << "\n";
 
          std::cout << "~UP/Down Arrows for navigation\n~Enter for choice\n\n";
@@ -91,7 +94,7 @@ EnumType runMenuLoop(const std::string& menuTitle, const std::vector<std::string
         else if (ch == KEY_ESC) {
             return static_cast<EnumType>(-1);
         }
-       
+        
     }
     return static_cast<EnumType>(-1);
 }
@@ -181,6 +184,7 @@ EnumType runBMenuLoop(const std::string& menuTitle, const std::vector<std::strin
         else if (ch == KEY_ESC) {
             return static_cast<EnumType>(-1);
         }
+        
     }
     return static_cast<EnumType>(-1);
 }
