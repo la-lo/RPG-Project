@@ -67,7 +67,14 @@ the next thing on my bingo list is too debug my menu system because after creati
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+**Reflection**
+the thing  that i have worked on so far in my RPG is creating  a Party class that would hold characters in vector. I've also added a heal function  that allow user to  heal based on player magic power stat  and if player health is is max would not execute  magic while subtracting a  set amount out  of MP.
+
+Reflection for this week Development  Process  I would say  it was  an unproductive week because I had so many personal problems  this week that I was only able to work on  my project on day  out of this week  (Friday) which was my day  off. 
+
+Areas that i need to work on for this last week is my time  management  because I let a lot of stuff out side work take too much of my time and thought in which I could be focusing all that power  into my project.
+
+Also have Currently changed function  to allow  party as a  parameter.  currently working  on  allowing my battle function to cycle between each party member  to allow each party to take a chance to attack heal or defend.
 
 ### Week 4
 
