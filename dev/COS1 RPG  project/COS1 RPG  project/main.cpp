@@ -64,7 +64,7 @@ int main()
            
             system("CLS");
 
-            std::cout << "\t\tDimension 7\n\t\t-----------\nPress Any Key.";
+            std::cout << "\t\tDimension 7\n\tAn Endless Nightmare\t\t-----------\nPress Any Key.";
             std::cout << "\n\n\tKey\n\t---\n-Press ESC for Main Menu" ;
 
             if(_getch() == KEY_ESC )

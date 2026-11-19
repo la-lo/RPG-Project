@@ -33,7 +33,7 @@ int enemy::getDefense() const
     return Defense;
 }
 
-void enemy::takeDamage(int damage)
+void enemy::takeDamage(float damage)
 {
     Health -= damage;
     if (Health < 0)Health = 0;
@@ -45,7 +45,7 @@ void enemy::attack(enemy& attacker, character& reciever)
     
     int damage = attacker.Attackpower * 2;
 
-    reciever.takedamage(damage/reciever.GetDefense()*.4);
+    reciever.takedamage(static_cast<double>(damage) / reciever.GetDefense() * .4);
     
 }
 

@@ -14,7 +14,7 @@ public:
 	int getattack() const;
 	int getDefense()const;
 
-	void takeDamage(int damage);
+	void takeDamage(float damage);
 
 	void attack(enemy& attacker,character& reciever);
 	
@@ -22,7 +22,7 @@ public:
 
 private:
 	std::string name;
-	int Health;
+	float Health;
 	int Maxhealth;
 	int Attackpower;
 	int Defense;

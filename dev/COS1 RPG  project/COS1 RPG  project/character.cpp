@@ -178,23 +178,42 @@ void character::Heal(int _heal)
 		currentHP = Basestats[0];
 		
 	}
+	
+}
+
+void character::fire(character& attacker,enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense()* .01);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
+	currentMP -= 4;
+}
+
+void character::ice(character& attacker,enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense() * .2);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
 	currentMP -= 2;
+}
+
+void character::lightning(character& attacker, enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense() * .02);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
+	currentMP -= 3;
 }
 
 void character::Attack(const character& attacker, enemy& receiver)
 {
 	
 	
-	int damage = attacker.Basestats[5] - (receiver.getattack() * 2);
+	int damage = attacker.Basestats[5] - (receiver.getDefense() * .2);
 
 	if (damage < 1)damage = 1;
 	
 	receiver.takeDamage(damage);
-	
-
-	
-	
-	
 	
 }
 
@@ -205,6 +224,7 @@ void character::Cure( character& receiver)
 	int  heal = receiver.Basestats[2] * 2;
 
 	receiver.Heal(heal);
+	currentMP -= 2;
 }
 
 

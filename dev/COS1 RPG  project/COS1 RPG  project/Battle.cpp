@@ -135,6 +135,8 @@
 	 std::mt19937 gen(rd());
 	 std::uniform_int_distribution<int>dist(0, 1);
 
+	 int turn = 1;
+
 	 bool battle = true;
 	 while (battle)
 
@@ -144,8 +146,9 @@
 		 {
 
 			 system("CLS");
+			
 			 DisplayHPMP(_party, _cpu);
-			 std::cout << _cpu.getName() << " WINS!!!";
+			 std::cout << _cpu.getName() << " WINS!!!"<<"\n Turns taken: "<<turn;
 			 battle = false;
 			 break;
 		 }
@@ -153,56 +156,86 @@
 		 {
 			 system("CLS");
 			 DisplayHPMP(_party, _cpu);
-			 std::cout << "Party WINS!!!";
+			 std::cout << "Party WINS!!!" << "\nTurns taken: " << turn;;
 			 battle = false;
 			 break;
 		 }
-
-
-
+		 std::cout << "TURN " << turn << std::endl;
 		 DisplayHPMP(_party, _cpu);
-
 
 		 Battlemenu battlechoice = runBMenuLoop<Battlemenu>("\tBattle", Battleop, static_cast<int>(Battlemenu::count), _party, _cpu);
 
-
 		 switch (battlechoice)
 		 {
-
 		 case Battlemenu::Attack:
 			 _party.party[0].Attack(_party.party[0], _cpu);
 			 break;
 		 case Battlemenu::spells:
 		 {
-			
 			 if (battlechoice == Battlemenu::spells)
 			 {
 				 Spells spellchoice = runBMenuLoop<Spells>("\tSpells", spell, static_cast<int>(Spells::count),_party, _cpu);
 				 switch (spellchoice)
 				 {
 				 case Spells::Cure:
-					 _party.party[0].Cure(_party.party[0]);
-					 break;
+					 if(_party.party[0].getMP()<2)
+					 {
+						 break;
+					 }else
+					 {
+						 _party.party[0].Cure(_party.party[0]);
+						 break;
+
+					 }
+					 
+					 
 				 case Spells::FireBall:
+					 if (_party.party[0].getMP() < 4)
+					 {
+						 break;
+					 }
+					 else
+					 {
+						 _party.party[0].fire(_party.party[0], _cpu);
+						 break;
+
+					 }
+					 
 					 break;
 				 case  Spells::IceAge:
-					 break;
+					 
+					 if (_party.party[0].getMP() < 2)
+					 {
+						 break;
+					 }
+					 else
+					 {
+						 _party.party[0].ice(_party.party[0], _cpu);
+						 break;
+					 }
 				 case Spells::Lightning:
-					 break;
+					 if (_party.party[0].getMP() < 3)
+					 {
+						 break;
+					 }
+					 else
+					 {
+						_party.party[0].lightning(_party.party[0], _cpu);
+						 break;
+					 }
+					 
+					
 				 }
-
 				 break;
 			 }
 			 break;
 		 }
-
 		 case Battlemenu::items:
 		 _party.party[0].Displayitems();
 			 break;
 		 case Battlemenu::defend:
 			 if (dist(gen) == 0)
 			 {
-
 				 break;
 			 }
 			 else
@@ -210,12 +243,13 @@
 				 _cpu.attack(_cpu,_party.party[0]);
 				 break;
 			 }
-
+			
 		 }
 
 		 std::cout << std::endl;
+		 turn++;
 	 }
-
+	
  }
 
  void DisplayHPMP(Party _party, enemy _cpu)

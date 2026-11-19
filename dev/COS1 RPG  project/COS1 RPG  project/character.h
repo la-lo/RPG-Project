@@ -41,10 +41,15 @@ public:
 
 	void takedamage(int _damage);
 	void Heal(int _heal);
+	void fire(character& attacker, enemy& reciever);
+
+	void ice(character& attacker, enemy& reciever);
+	
+	void lightning(character&, enemy&  reviever);
 
 	void Attack(const character& attacker, enemy& receiver);
 
-	void Cure( character& receiver);
+	void Cure(character& receiver);
 
 	
 
