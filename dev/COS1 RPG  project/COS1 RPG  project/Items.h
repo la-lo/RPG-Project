@@ -11,13 +11,13 @@ enum class ItemType
 class Items
 {
 private:
-	int qauntity;
+	
 	int power;
 	std::string name;
 	ItemType type;
 
 public:
-	
+	int qauntity;
 		Items(std::string _name, int _quantity, int _power, ItemType _type);
 		virtual ~Items();
 		std::string Getname() const;

@@ -141,10 +141,10 @@
   <ItemGroup>
     <ClCompile Include="character.cpp" />
     <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Party.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />

@@ -1,11 +1,13 @@
 
 #include"character.h"
 #include "enemy.h"
+#include<iostream>
 
 enemy::enemy(std::string _name, int maxhp, int attack,int df)
-    :name(_name), Maxhealth(maxhp), Health(maxhp), Attackpower(attack),Defense(df)
+    :name(_name), Maxhealth(maxhp), Health(maxhp), Attackpower(attack),Defense(df),ATBGuage(0),speed(9)
 {
 }
+
 
 std::string enemy::getName()
 {
@@ -33,6 +35,20 @@ int enemy::getDefense() const
     return Defense;
 }
 
+int enemy::getspeed() const
+{
+    return speed;
+}
+
+void enemy::AttackAll(enemy& attacker, Party& reciever)
+{
+    int damage = attacker.Attackpower * .1;
+    for(int i = 0;i<reciever.party.size();i++)
+    {
+        reciever.party[i].takedamage(damage);
+    }
+}
+
 void enemy::takeDamage(float damage)
 {
     Health -= damage;
@@ -40,12 +56,18 @@ void enemy::takeDamage(float damage)
 
 }
 
+bool enemy::isAlive() const
+{
+    return Health > 0;
+}
+
 void enemy::attack(enemy& attacker, character& reciever)
 {
     
-    int damage = attacker.Attackpower * 2;
+    float damage = attacker.Attackpower * 3;
 
-    reciever.takedamage(static_cast<double>(damage) / reciever.GetDefense() * .4);
+    reciever.takedamage(damage / reciever.GetDefense() * .4);
+    std::cout << attacker.getName() << " Attacked " << reciever.getName()<<'\n';
     
 }
 

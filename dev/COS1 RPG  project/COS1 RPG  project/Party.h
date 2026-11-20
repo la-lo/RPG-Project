@@ -2,10 +2,14 @@
 #include  "character.h"
 
 
+
 class  Party
 {
 public:
 	std::vector<character> party;
+	
+	
+	
 
 	Party(character p0, character p1, character p2, character p3)
 	{
@@ -14,4 +18,6 @@ public:
 		party.push_back(p2);
 		party.push_back(p3);
 	}
+
+	bool isPartyAlive(const Party&_party,int count);
 };

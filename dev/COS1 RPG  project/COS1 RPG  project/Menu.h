@@ -16,7 +16,6 @@ constexpr auto KEY_TAB = 9;
 enum class MainMenu
 {
 	StartGame,
-	loadSave,
 	quit,
 	Count
 };
@@ -48,6 +47,14 @@ enum class Spells
     FireBall,
     IceAge,
     Lightning,
+    count
+
+};
+enum class items
+{
+    potion,
+    sheild,
+    Elixir,
     count
 
 };
@@ -144,6 +151,54 @@ EnumType runBMenuLoop(const std::string& menuTitle, const std::vector<std::strin
 }
 
 template <typename EnumType>
+EnumType runATBMenuLoop(const std::string& menuTitle, const std::vector<std::string>& options, int enumCountValue, Party& player, enemy _cpu,int playercount)
+{
+    bool menuRunning = true;
+    int currentSelection = 0;
+    int totalOptions = enumCountValue;
+    while (menuRunning) {
+        system("CLS");
+        std::cout << "~UP/Down Arrows for navigation\n~Enter for choice\n\n";
+
+        std::cout << menuTitle << "\n";
+
+        std::cout <<"IT'S " << player.party[playercount].getName() << " Turn";
+
+        DisplayHPMP(player, _cpu);
+
+        for (int i = 0; i < totalOptions; ++i) {
+            if (i == currentSelection) {
+
+                std::cout << "-> " << options[i] << " <-\n";
+            }
+            else {
+                std::cout << "   " << options[i] << "\n";
+            }
+        }
+
+        int ch = _getch();
+        if (ch == 224) {
+            switch (_getch()) {
+            case KEY_UP:
+                currentSelection = (currentSelection == 0) ? totalOptions - 1 : currentSelection - 1;
+                break;
+            case KEY_DOWN:
+                currentSelection = (currentSelection == totalOptions - 1) ? 0 : currentSelection + 1;
+                break;
+            }
+        }
+        else if (ch == KEY_ENTER) {
+            return static_cast<EnumType>(currentSelection);
+        }
+        else if (ch == KEY_ESC) {
+            return static_cast<EnumType>(-1);
+        }
+        
+    }
+    return static_cast<EnumType>(-1);
+}
+
+template <typename EnumType>
 EnumType runBMenuLoop(const std::string& menuTitle, const std::vector<std::string>& options, int enumCountValue, Party player, enemy _cpu)
 {
     bool menuRunning = true;
@@ -184,7 +239,7 @@ EnumType runBMenuLoop(const std::string& menuTitle, const std::vector<std::strin
         else if (ch == KEY_ESC) {
             return static_cast<EnumType>(-1);
         }
-        
+
     }
     return static_cast<EnumType>(-1);
 }

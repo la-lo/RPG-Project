@@ -6,7 +6,9 @@
 #include"Weapon.h"
 #include"Armor.h"
 #include"Items.h"
+
 class enemy;
+class Party;
 class character
 {
 private:
@@ -16,9 +18,12 @@ private:
 
 	float currentHP;
 	float currentMP;
-	float ATBguage;
+
 	bool isready;
 
+	int sheildturns = 0;
+	int sheildbonus = 0;
+	
 
 	
 	std::vector<int>Basestats;
@@ -33,8 +38,9 @@ private:
 	void assignedClassType();
 
 public:
-
+	float ATBguage;
 	character(const std::string& _name, CharacterType _type);
+	bool isAlive()const;
 
 	void LevelUp();
 	std::string getName();
@@ -51,6 +57,13 @@ public:
 
 	void Cure(character& receiver);
 
+
+	bool potion(Items&potion);
+	void useShield(Items& item);
+	void updateShield();
+	void useElixir(Items& item);
+	
+
 	
 
 	bool WeaponEquip(const std::shared_ptr<Weapon>& _weapon);
@@ -63,6 +76,8 @@ public:
 	int getMP() const;
 	int getMPower()const;
 	int GetDefense()const;
+	float GetAtb()const;
+	int Getspeed()const;
 
 	void DisplayCurrentStats() const;
 	void Displayitems()const;
