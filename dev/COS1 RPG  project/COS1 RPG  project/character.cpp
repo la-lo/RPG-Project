@@ -1,6 +1,7 @@
 #include "character.h"
 #include"enemy.h"
 #include<iostream>
+#include"Party.h"
 
 void character::assignedClassType()
 {
@@ -40,6 +41,11 @@ character::character(const std::string& _name, CharacterType _type)
 	
 	assignedClassType();
 	
+}
+
+bool character::isAlive()const
+{
+	return currentHP > 0;
 }
 
 void character::LevelUp()
@@ -107,11 +113,36 @@ int character::getHP() const
 
 }
 
+int character::GetMaxMP() const
+{
+	return Basestats[3];
+}
+
 
 
 int character::getMP() const
 {
 	return currentMP;
+}
+
+int character::getMPower() const
+{
+	return Basestats[2];
+}
+
+int character::GetDefense() const
+{
+	return Basestats[1];
+}
+
+float character::GetAtb() const
+{
+	return ATBguage;
+}
+
+int character::Getspeed() const
+{
+	return Basestats[4];
 }
 
 
@@ -147,28 +178,167 @@ void character::Displayitems() const
 	}
 }
 
-void character::takedamage(float _damage)
+void character::Attack(const character& attacker, enemy& receiver)
 {
-	
+
+
+	float damage = attacker.Basestats[5] - (receiver.getattack() * 0.2f);
+
+	if (damage < 1.0f)damage = 1.0f;
+
+	receiver.takeDamage(damage);
+
+	std::cout << attacker.name << " Attacked " << receiver.getName() << "for"<<damage << '\n';
+}
+
+
+
+void character::takedamage(int _damage)
+{
 	currentHP -= _damage;
 	if (currentHP < 0) currentHP = 0;
 }
 
-void character::Attack(const character& attacker, enemy& receiver)
+void character::Heal(int _heal)
 {
-	
-	
-	float damage = attacker.Basestats[5] - (receiver.getattack() * 0.2f);
+	currentHP += _heal;
 
-	if (damage < 1.0f)damage = 1.0f;
-	
-	receiver.takeDamage(damage);
-	
-
-	
-	
-	
+	if (currentHP > Basestats[0]) 
+	{ 
+		currentHP = Basestats[0];
+		
+	}
 	
 }
+
+void character::fire(character& attacker,enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense()* .01);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
+	currentMP -= 4;
+	std::cout << attacker.getName() << " used Fire on " << reciever.getName() << '\n';
+}
+
+void character::ice(character& attacker,enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense() * .2);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
+	currentMP -= 2;
+	std::cout << attacker.getName() << " used Ice on " << reciever.getName() << '\n';
+}
+
+void character::lightning(character& attacker, enemy& reciever)
+{
+	int damage = attacker.Basestats[5] - (reciever.getDefense() * .02);
+	if (damage < 1)damage = 1;
+	reciever.takeDamage(damage);
+	currentMP -= 3;
+	std::cout << attacker.getName() << " used Lightnig on "<< reciever.getName()<<'\n';
+}
+
+
+
+
+
+void character::Cure( character& reciever)
+{
+	int  heal = reciever.Basestats[2] * 2;
+
+	reciever.Heal(heal);
+	currentMP -= 2;
+	std::cout << reciever.getName() << " used cure!\n";
+}
+
+
+bool character::potion(Items& potion)
+{
+	if(potion.GetQuantity()<=0)
+	{
+		std::cout << "No potions!\n";
+		return false;
+	}
+	int maxhp = Basestats[0];
+
+	if(currentHP>=maxhp)
+	{
+		std::cout << "HP is Full Already!\n";
+		return false;
+	}
+
+	int heal = potion.GetPower();
+
+	currentHP += heal;
+	if(currentHP>maxhp)
+	{
+		currentHP = maxhp;
+	}
+
+	potion.qauntity--;
+	std::cout << name << " used a " << potion.Getname() << " and recovered "
+		<< heal << " HP! (" << potion.qauntity << " left)\n";
+	
+	
+	return true;
+
+
+}
+
+void character::useShield(Items& item)
+{
+	if (item.qauntity <= 0) 
+	{
+		std::cout << "No Shields!!";
+	}
+
+	
+	if (sheildturns > 0) {
+		Basestats[1] -= sheildbonus;
+	}
+
+	sheildbonus = item.GetPower(); 
+	Basestats[1] += sheildbonus;
+	sheildturns = 3;
+	item.qauntity--;
+
+	std::cout << name << " used " << item.Getname() << "! Defense increased by "
+		<< sheildbonus << " for 3 turns (" << item.qauntity << " left).\n";
+}
+
+void character::updateShield()
+{
+	if(sheildturns>0)
+	{
+		sheildturns--;
+
+		if(sheildturns==0)
+		{
+			Basestats[1] -= sheildbonus;
+			sheildbonus = 0;
+			std::cout << name << "'s Shield wore off\n";
+		}
+	}
+}
+
+
+
+
+void character::useElixir(Items& item)
+{
+	if (item.qauntity <= 0) return;
+	currentHP = Basestats[0];
+
+	
+	 currentMP = Basestats[3];
+
+	item.qauntity--;
+
+	std::cout << name << " used " << item.Getname()<< "! Restored HP and MP to Full.(" << item.qauntity << " left).\n";;
+}
+
+
+
+
 
 

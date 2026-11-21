@@ -144,6 +144,7 @@
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Party.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="CharacterType.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="Party.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Menu.h" />
