@@ -78,4 +78,12 @@ Also have Currently changed function  to allow  party as a  parameter.  currentl
 
 ### Week 4
 
-My final stand up...
+**REFLECTION**
+
+this week I was able to finish up my  in battle function that cycle through the party and depending on player speed stat it would allow party member to attack when attack guage filled the CPU while also allowing cpu to attack based on if cpu  filled hit attack gauge. wasn't able to finish my true Active time battle function because when trying to use chrono it would make my application have lag spikes which I believe I didn't have time to meet due date completion.
+
+was able to create a the potions(heal, shield, elixir) that player would use in battle showing player how many are left after usage and for shield it would tell the player how many turns it would last(3 turns). also finished my magic attacks like fire, ice, cure, and lightning with each magic having it own cost to MP.
+
+my biggest take away from this course is that I starting to better understand the C++ language and it's applicable use , also that I really need to set aside time for me to be able to practice my coding and test out my ideas because if not i would have to cut back on feature  that I would like to apply to my application.
+
+I will definitely continue to work and improve on this project because  even thought this month was a crazy and busy month the times that I would have to finish my project  where the most fun I had in a while because I would  get stuck and it would be frustrating but once I fully understood a topic I was  over whelmed with accomplishment. would  like to continue and finishing  creating a true active time  battle function.
